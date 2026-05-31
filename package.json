@@ -1,0 +1,60 @@
+{
+  "name": "driftara-video",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Driftara Video — standalone video gallery desktop app",
+  "author": "Driftara Video",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "concurrently --kill-others --success command-electron -n server,vite,electron \"npm run server\" \"vite\" \"npm run dev:electron\"",
+    "dev:web": "concurrently --kill-others-on-fail -n server,vite \"npm run server\" \"vite\"",
+    "vite:only": "vite",
+    "dev:electron": "wait-on http://localhost:5173 && tsc -p electron/tsconfig.json && cross-env ELECTRON_IS_DEV=1 electron .",
+    "build": "tsc -p electron/tsconfig.json && tsc -b && vite build",
+    "dist": "npm run build && electron-builder build --win",
+    "server": "npx tsx server/index.ts",
+    "start:browser": "npm run build && node dist-server/index.js"
+  },
+  "build": {
+    "forceCodeSigning": false,
+    "appId": "com.driftara.video",
+    "productName": "Driftara Video",
+    "win": {
+      "icon": "public/icon.png",
+      "target": "nsis"
+    },
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "public/**/*"
+    ]
+  },
+  "dependencies": {
+    "@synthet/image-scoring-design": "file:../image-scoring-ui",
+    "electron-is-dev": "^3.0.1",
+    "express": "^5.2.1",
+    "lucide-react": "^0.563.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "sqlite3": "^5.1.7",
+    "zustand": "^5.0.11"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
+    "@types/sqlite3": "*",
+    "@vitejs/plugin-react": "^5.1.1",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "electron": "^31.3.1",
+    "electron-builder": "^24.13.3",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.4",
+    "wait-on": "*"
+  }
+}

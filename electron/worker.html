@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Driftara Video Frame Extraction Worker</title>
+</head>
+<body>
+    <script>
+        const { ipcRenderer } = require('electron');
+        const fs = require('fs');
+        const path = require('path');
+
+        ipcRenderer.on('extract-metadata', async (event, { videoId, filePath, thumbnailsDir }) => {
+            try {
+                console.log(`[Worker] Extracting metadata for video ID ${videoId}: ${filePath}`);
+                
+                if (!fs.existsSync(filePath)) {
+                    throw new Error(`File not found: ${filePath}`);
+                }
+
+                // Create HTML5 Video Element
+                const video = document.createElement('video');
+                // Use absolute file URI with safe characters escape
+                video.src = 'file:///' + filePath.replace(/\\/g, '/').split('/').map(encodeURIComponent).join('/');
+                video.muted = true;
+                video.preload = 'metadata';
+
+                await new Promise((resolve, reject) => {
+                    video.onloadedmetadata = () => resolve();
+                    video.onerror = () => reject(new Error('Failed to load video metadata or format unsupported'));
+                    setTimeout(() => reject(new Error('Metadata loading timed out (10s)')), 10000);
+                });
+
+                const duration = video.duration || 0;
+                const width = video.videoWidth || 0;
+                const height = video.videoHeight || 0;
+
+                // Seek to 2 seconds or 10% of video if it's very short
+                const seekTime = Math.min(2.0, duration * 0.1);
+                video.currentTime = seekTime;
+
+                await new Promise((resolve, reject) => {
+                    video.onseeked = () => resolve();
+                    video.onerror = () => reject(new Error('Failed during seeking'));
+                    setTimeout(() => reject(new Error('Seeking timed out (5s)')), 5000);
+                });
+
+                // Create Canvas and draw current frame
+                const canvas = document.createElement('canvas');
+                // Cap canvas width at 640px to ensure fast operations and lightweight files
+                const scale = Math.min(1, 640 / Math.max(1, width));
+                canvas.width = Math.max(1, Math.round(width * scale));
+                canvas.height = Math.max(1, Math.round(height * scale));
+
+                const ctx = canvas.getContext('2d');
+                if (!ctx) throw new Error('Could not create 2D canvas context');
+                
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                // Convert canvas to base64 JPEG
+                const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+                const base64Data = dataUrl.replace(/^data:image\/jpeg;base64,/, '');
+                const buffer = Buffer.from(base64Data, 'base64');
+
+                // Write JPG to thumbnails folder
+                const thumbName = `thumb_${videoId}_${Date.now()}.jpg`;
+                const thumbPath = path.join(thumbnailsDir, thumbName);
+                fs.writeFileSync(thumbPath, buffer);
+
+                // Send success back to main process
+                ipcRenderer.send('extract-metadata-success', {
+                    videoId,
+                    duration,
+                    width,
+                    height,
+                    thumbnailPath: thumbPath
+                });
+
+                // Garbage Collection
+                video.src = '';
+                video.load();
+            } catch (err) {
+                console.error(`[Worker] Extraction error for ID ${videoId}:`, err);
+                ipcRenderer.send('extract-metadata-failure', {
+                    videoId,
+                    error: err.message || 'Unknown extraction error'
+                });
+            }
+        });
+    </script>
+</body>
+</html>
