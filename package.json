@@ -1,7 +1,7 @@
 {
   "name": "driftara-video",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Driftara Video — standalone video gallery desktop app",
   "author": "Driftara Video",
   "main": "dist-electron/main.js",
@@ -9,11 +9,15 @@
     "dev": "concurrently --kill-others --success command-electron -n server,vite,electron \"npm run server\" \"vite\" \"npm run dev:electron\"",
     "dev:web": "concurrently --kill-others-on-fail -n server,vite \"npm run server\" \"vite\"",
     "vite:only": "vite",
-    "dev:electron": "wait-on http://localhost:5173 && tsc -p electron/tsconfig.json && cross-env ELECTRON_IS_DEV=1 electron .",
-    "build": "tsc -p electron/tsconfig.json && tsc -b && vite build",
+    "dev:electron": "wait-on http://localhost:5174 && tsc -p electron/tsconfig.json && node -e \"require('fs').mkdirSync('dist-electron', {recursive: true}); require('fs').copyFileSync('electron/worker.html', 'dist-electron/worker.html')\" && cross-env ELECTRON_IS_DEV=1 electron .",
+    "build": "tsc -p electron/tsconfig.json && node -e \"require('fs').mkdirSync('dist-electron', {recursive: true}); require('fs').copyFileSync('electron/worker.html', 'dist-electron/worker.html')\" && tsc -b && vite build",
     "dist": "npm run build && electron-builder build --win",
     "server": "npx tsx server/index.ts",
-    "start:browser": "npm run build && node dist-server/index.js"
+    "start:browser": "npm run build && node dist-server/index.js",
+    "mcp:build": "npm run build --prefix mcp-server",
+    "mcp:install": "npm install --prefix mcp-server",
+    "design:check": "node scripts/check-design-tokens.mjs",
+    "ui:review": "node scripts/ui-visual-review.mjs"
   },
   "build": {
     "forceCodeSigning": false,
@@ -39,7 +43,7 @@
     "lucide-react": "^0.563.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "sqlite3": "^5.1.7",
+    "sqlite3": "^6.0.1",
     "zustand": "^5.0.11"
   },
   "devDependencies": {
@@ -53,6 +57,7 @@
     "cross-env": "^10.1.0",
     "electron": "^31.3.1",
     "electron-builder": "^24.13.3",
+    "playwright": "^1.52.0",
     "typescript": "~5.9.3",
     "vite": "^7.2.4",
     "wait-on": "*"

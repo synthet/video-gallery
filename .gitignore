@@ -85,6 +85,9 @@ Thumbs.db
 # Databases & local configs
 *.db
 *.sqlite
+config.json
+video-mcp.lock
+.claude/settings.local.json
 .env
 .env.local
 .env.development.local

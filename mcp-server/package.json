@@ -1,0 +1,21 @@
+{
+    "name": "video-gallery-mcp",
+    "version": "1.0.0",
+    "description": "stdio + live MCP for Driftara Video (video-gallery): local tools, Express dev API, Electron CDP",
+    "main": "dist/index.js",
+    "type": "module",
+    "scripts": {
+        "build": "tsc",
+        "start": "node dist/index.js",
+        "start:live": "node dist/liveServer.js",
+        "test:live-smoke": "npm run build && node dist/liveServer.smoke.js"
+    },
+    "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.0.1",
+        "raw-body": "^3.0.2"
+    },
+    "devDependencies": {
+        "@types/node": "^22.0.0",
+        "typescript": "^5.0.0"
+    }
+}

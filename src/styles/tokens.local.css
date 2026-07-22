@@ -1,0 +1,35 @@
+/*
+ * Video gallery layout, spacing, and component surfaces.
+ * Shared palette from @synthet/image-scoring-design/tokens.css.
+ */
+
+:root {
+  --sidebar-width: 250px;
+  --layout-sidebar-collapse-bp: 1100px;
+
+  --space-xs: 4px;
+  --space-sm: 6px;
+  --space-md: 10px;
+  --space-lg: 15px;
+  --space-xl: 20px;
+
+  --font-xs: 0.75em;
+  --font-sm: 0.8em;
+  --font-md: 0.85em;
+  --font-base: 0.9em;
+  --font-lg: 1em;
+  --font-xl: 1.1em;
+  --font-2xl: 1.2em;
+
+  --card-bg: var(--color-bg-tertiary);
+  --input-bg: #333333;
+  --input-border: #555555;
+  --overlay-bg: rgba(0, 0, 0, 0.95);
+  --modal-backdrop: rgba(0, 0, 0, 0.75);
+  --sidebar-scrim: rgba(0, 0, 0, 0.45);
+
+  --focus-ring: 2px solid var(--color-accent);
+  --focus-offset: 2px;
+
+  --color-rating: var(--color-score-gold);
+}

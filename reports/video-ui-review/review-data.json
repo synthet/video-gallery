@@ -1,0 +1,196 @@
+{
+  "url": "http://localhost:5174/",
+  "capturedAt": "2026-07-22T02:16:38.199Z",
+  "viewports": [
+    {
+      "name": "01-desktop-1440x900",
+      "sidebarWidth": 250,
+      "topBarHeight": 40,
+      "mainWidth": 1190,
+      "bodyFontFamily": "\"Segoe UI\", Tahoma, Geneva, Verdana, sans-serif",
+      "accentToken": "#007acc",
+      "primaryBtnBg": "rgb(0, 122, 204)",
+      "cardCount": 50,
+      "hasBreadcrumbs": false,
+      "horizontalOverflow": false,
+      "dbFooterText": true,
+      "titleText": "Video Gallery",
+      "contrast": [
+        {
+          "el": "ratingButtonActive",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(0, 122, 204)",
+          "fontSize": "14.4px",
+          "ratio": 4.51
+        },
+        {
+          "el": "searchInput",
+          "color": "rgb(204, 204, 204)",
+          "background": "rgb(51, 51, 51)",
+          "placeholder": "Titles, tags…",
+          "ratio": 7.87
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "name": "02-laptop-1280x800",
+      "sidebarWidth": 250,
+      "topBarHeight": 40,
+      "mainWidth": 1030,
+      "bodyFontFamily": "\"Segoe UI\", Tahoma, Geneva, Verdana, sans-serif",
+      "accentToken": "#007acc",
+      "primaryBtnBg": "rgb(0, 122, 204)",
+      "cardCount": 50,
+      "hasBreadcrumbs": false,
+      "horizontalOverflow": false,
+      "dbFooterText": true,
+      "titleText": "Video Gallery",
+      "contrast": [
+        {
+          "el": "ratingButtonActive",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(0, 122, 204)",
+          "fontSize": "14.4px",
+          "ratio": 4.51
+        },
+        {
+          "el": "searchInput",
+          "color": "rgb(204, 204, 204)",
+          "background": "rgb(51, 51, 51)",
+          "placeholder": "Titles, tags…",
+          "ratio": 7.87
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "name": "03-tablet-1024x768",
+      "sidebarWidth": 0,
+      "topBarHeight": 40,
+      "mainWidth": 1024,
+      "bodyFontFamily": "\"Segoe UI\", Tahoma, Geneva, Verdana, sans-serif",
+      "accentToken": "#007acc",
+      "primaryBtnBg": "rgb(0, 122, 204)",
+      "cardCount": 50,
+      "hasBreadcrumbs": false,
+      "horizontalOverflow": false,
+      "dbFooterText": true,
+      "titleText": "Video Gallery",
+      "contrast": [
+        {
+          "el": "ratingButtonActive",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(0, 122, 204)",
+          "fontSize": "14.4px",
+          "ratio": 4.51
+        },
+        {
+          "el": "searchInput",
+          "color": "rgb(204, 204, 204)",
+          "background": "rgb(51, 51, 51)",
+          "placeholder": "Titles, tags…",
+          "ratio": 7.87
+        }
+      ],
+      "consoleErrors": []
+    },
+    {
+      "name": "04-narrow-900x700",
+      "sidebarWidth": 0,
+      "topBarHeight": 40,
+      "mainWidth": 900,
+      "bodyFontFamily": "\"Segoe UI\", Tahoma, Geneva, Verdana, sans-serif",
+      "accentToken": "#007acc",
+      "primaryBtnBg": "rgb(0, 122, 204)",
+      "cardCount": 50,
+      "hasBreadcrumbs": false,
+      "horizontalOverflow": false,
+      "dbFooterText": true,
+      "titleText": "Video Gallery",
+      "contrast": [
+        {
+          "el": "ratingButtonActive",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(0, 122, 204)",
+          "fontSize": "14.4px",
+          "ratio": 4.51
+        },
+        {
+          "el": "searchInput",
+          "color": "rgb(204, 204, 204)",
+          "background": "rgb(51, 51, 51)",
+          "placeholder": "Titles, tags…",
+          "ratio": 7.87
+        }
+      ],
+      "consoleErrors": []
+    }
+  ],
+  "consoleErrors": [],
+  "interactions": [
+    {
+      "action": "ingest-modal",
+      "consoleErrors": []
+    },
+    {
+      "action": "ingest-escape",
+      "closed": true
+    },
+    {
+      "action": "logs-modal"
+    },
+    {
+      "action": "card-open",
+      "theaterVisible": true
+    },
+    {
+      "action": "theater-escape",
+      "closed": true
+    },
+    {
+      "action": "select-names",
+      "selects": [
+        {
+          "id": "filter-capture-date",
+          "hasLabel": true
+        },
+        {
+          "id": "filter-sort-by",
+          "hasLabel": true
+        }
+      ]
+    },
+    {
+      "action": "folder-select",
+      "breadcrumbs": true
+    }
+  ],
+  "contrast": [
+    {
+      "el": "ratingButtonActive",
+      "color": "rgb(255, 255, 255)",
+      "background": "rgb(0, 122, 204)",
+      "fontSize": "14.4px",
+      "ratio": 4.51
+    },
+    {
+      "el": "searchInput",
+      "color": "rgb(204, 204, 204)",
+      "background": "rgb(51, 51, 51)",
+      "placeholder": "Titles, tags…",
+      "ratio": 7.87
+    },
+    {
+      "el": "clearFilters",
+      "color": "rgb(244, 71, 71)",
+      "background": "rgb(58, 21, 21)",
+      "ratio": 4.5
+    }
+  ],
+  "a11y": {
+    "h1": 1,
+    "h2": 1,
+    "issues": []
+  }
+}

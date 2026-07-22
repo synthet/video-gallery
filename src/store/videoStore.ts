@@ -69,7 +69,6 @@ interface VideoState {
     dates: string[];
     keywords: string[];
     ingestLogs: any[];
-    activeTab: 'gallery' | 'ingest' | 'logs';
     selectedVideoId: number | null;
     selectedVideo: any | null;
     
@@ -100,7 +99,6 @@ interface VideoState {
     ingestLogsConsole: string[];
 
     // Action dispatches
-    setTab: (tab: 'gallery' | 'ingest' | 'logs') => void;
     setFilters: (filters: Partial<VideoFilters>) => void;
     clearFilters: () => void;
     setPage: (page: number) => void;
@@ -155,7 +153,6 @@ export const useVideoStore = create<VideoState>((set, get) => {
         dates: [],
         keywords: [],
         ingestLogs: [],
-        activeTab: 'gallery',
         selectedVideoId: null,
         selectedVideo: null,
 
@@ -188,8 +185,6 @@ export const useVideoStore = create<VideoState>((set, get) => {
         ingestSourcePath: '',
         isIngesting: false,
         ingestLogsConsole: [],
-
-        setTab: (tab) => set({ activeTab: tab }),
 
         setFilters: (newFilters) => {
             set((state) => ({

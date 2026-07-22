@@ -259,7 +259,7 @@ app.get('/media/*filePath', (req, res) => {
 
 // Serve index.html for Vite routing fallback
 if (fs.existsSync(distDir)) {
-    app.get('/*', (_req, res) => {
+    app.get(/.*/, (_req, res) => {
         res.sendFile(path.join(distDir, 'index.html'));
     });
 }

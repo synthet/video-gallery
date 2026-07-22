@@ -6,6 +6,18 @@ import { loadAppConfig, saveAppConfig } from './config';
 import { getLibraryRoot, getThumbnailsDir } from './db/provider';
 import { scanLibrary, getScanProgress, metadataQueue, calculateFileHash } from './scanner';
 import { getIngestTallies, spawnIngestScript } from './ingestRunner';
+import {
+    isVideoMcpLiveEnabled,
+    startVideoMcpLiveFromElectron,
+    stopVideoMcpLiveFromElectron,
+} from './videoMcpLive';
+
+const isDev = process.env.ELECTRON_IS_DEV === '1';
+const devRemoteDebuggingPort = process.env.ELECTRON_REMOTE_DEBUGGING_PORT || '9222';
+
+if (isDev || isVideoMcpLiveEnabled()) {
+    app.commandLine.appendSwitch('remote-debugging-port', devRemoteDebuggingPort);
+}
 
 let mainWindow: BrowserWindow | null = null;
 let workerWindow: BrowserWindow | null = null;
@@ -25,8 +37,6 @@ function envelope<T>(fn: (...args: any[]) => Promise<T>) {
 }
 
 function createWindow() {
-    const isDev = process.env.ELECTRON_IS_DEV === '1';
-    
     mainWindow = new BrowserWindow({
         width: 1280,
         height: 800,
@@ -41,7 +51,7 @@ function createWindow() {
     });
 
     if (isDev) {
-        mainWindow.loadURL('http://localhost:5173');
+        mainWindow.loadURL('http://localhost:5174');
         mainWindow.webContents.openDevTools();
     } else {
         mainWindow.loadFile(path.join(__dirname, '../dist/index.html'));
@@ -110,12 +120,28 @@ app.whenReady().then(async () => {
     createWindow();
     createWorkerWindow();
 
+    void startVideoMcpLiveFromElectron({
+        projectRoot: path.join(__dirname, '..'),
+        getWindowStatus: async () => ({
+            hasMainWindow: mainWindow !== null && !mainWindow.isDestroyed(),
+            visible: mainWindow?.isVisible() ?? false,
+            focused: mainWindow?.isFocused() ?? false,
+            bounds: mainWindow && !mainWindow.isDestroyed() ? mainWindow.getBounds() : null,
+        }),
+    }).catch((err) => {
+        console.warn('[Main] video-gallery-live MCP failed to start:', err);
+    });
+
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
             createWindow();
             createWorkerWindow();
         }
     });
+});
+
+app.on('before-quit', () => {
+    void stopVideoMcpLiveFromElectron();
 });
 
 app.on('window-all-closed', () => {

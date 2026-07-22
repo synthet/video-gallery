@@ -1,0 +1,134 @@
+.card {
+  background: var(--card-bg);
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+}
+
+.card:hover,
+.card:focus-visible {
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.card:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+.thumbWrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  background-color: var(--color-bg-preview);
+  overflow: hidden;
+}
+
+.thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .thumb {
+  transform: scale(1.04);
+}
+
+.hoverPreview {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.card:hover .hoverPreview {
+  opacity: 1;
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-text-muted);
+  padding: var(--space-md);
+}
+
+.placeholderName {
+  font-size: var(--font-xs);
+  text-align: center;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-text-secondary);
+}
+
+.durationTag {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background: rgba(0, 0, 0, 0.85);
+  color: var(--color-text-on-accent);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.sourceTag {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  background: rgba(0, 0, 0, 0.75);
+  color: var(--color-text-on-accent);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: 1px solid var(--color-border);
+}
+
+.details {
+  padding: var(--space-md);
+}
+
+.title {
+  font-size: var(--font-md);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  font-size: var(--font-xs);
+  color: var(--color-text-secondary);
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+  margin-top: 6px;
+}
+
+.star {
+  color: var(--color-rating);
+  fill: var(--color-rating);
+}

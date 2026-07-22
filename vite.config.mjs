@@ -10,7 +10,7 @@ export default defineConfig(function (_a) {
         // Dev: `/` avoids baseMiddleware 404 for absolute paths. Build keeps `./` for Electron/file://.
         base: command === 'serve' ? '/' : './',
         server: {
-            port: 5173,
+            port: 5174,
             strictPort: true,
             host: true,
             proxy: {

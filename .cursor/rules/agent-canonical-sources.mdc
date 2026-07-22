@@ -1,0 +1,33 @@
+---
+description: Canonical sources and video-gallery agent boundaries (Driftara Video)
+alwaysApply: true
+---
+
+# Agent canonical sources (video)
+
+## Data authority
+
+- **SQLite schema** is owned by this repo: `electron/db/schema.ts`, migrations implied by schema helpers in `electron/db/`.
+- **Do not** invent IPC channel names or DB column names without checking `electron/preload.ts`, `electron/main.ts`, and `electron/db/schema.ts`.
+
+## Electron and IPC
+
+- **Database and filesystem access** belong in the **Electron main process** and are exposed to the renderer only via **`preload` / `contextBridge` / IPC**.
+- **Do not** add direct renderer-process SQLite clients or raw filesystem access from React.
+
+## Commands (verify in package.json)
+
+- `npm run dev` — see [.agent/workflows/run_video_dev.md](../../.agent/workflows/run_video_dev.md)
+- `npm run dev:web`
+- `npx tsc --noEmit`
+- `npx tsc -p electron/tsconfig.json --noEmit`
+
+## Cross-repo
+
+- Shared design tokens: sibling **image-scoring-ui** (`@synthet/image-scoring-design`).
+- Agent infra reference: sibling **image-scoring-gallery**.
+- Scoring/backlog coordination: **image-scoring-backend** when explicitly in scope.
+
+## Agent infra index
+
+- [.agent/AGENT_INFRA_INVENTORY.md](../../.agent/AGENT_INFRA_INVENTORY.md), [.agent/COMMANDS.md](../../.agent/COMMANDS.md), [.agent/SAFETY.md](../../.agent/SAFETY.md), [.agent/workflows/](../../.agent/workflows/)

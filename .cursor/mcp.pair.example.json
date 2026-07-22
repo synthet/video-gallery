@@ -1,0 +1,15 @@
+{
+  "_comment": "Merge into video-gallery .cursor/mcp.json. Live server requires Electron dev (video-mcp.lock for actual port).",
+  "mcpServers": {
+    "video-gallery-stdio": {
+      "command": "node",
+      "args": ["${workspaceFolder}/mcp-server/dist/index.js"]
+    },
+    "video-gallery-live": {
+      "url": "http://127.0.0.1:9373/mcp/sse",
+      "headers": {
+        "Authorization": "Bearer ${env:GALLERY_MCP_TOKEN}"
+      }
+    }
+  }
+}

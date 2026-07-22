@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "video-gallery-stdio": {
+      "command": "node",
+      "args": [
+        "${workspaceFolder}/mcp-server/dist/index.js"
+      ]
+    },
+    "video-gallery-live": {
+      "url": "http://127.0.0.1:9373/mcp/sse",
+      "headers": {
+        "Authorization": "Bearer ${env:GALLERY_MCP_TOKEN}"
+      }
+    },
+    "cli-review": {
+      "command": "node",
+      "args": [
+        "${workspaceFolder}/../subagent-orchestrator/agent-orchestrator/dist/index.js"
+      ],
+      "env": {
+        "WORKSPACE_ROOT": "${workspaceFolder}"
+      }
+    }
+  }
+}

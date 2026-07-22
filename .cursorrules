@@ -1,0 +1,49 @@
+# Driftara Video (`video-gallery`)
+
+> Stub — authoritative agent rules live in `CLAUDE.md`, `AGENTS.md`,
+> `.cursor/rules/*.mdc`, `.agent/PROJECT_GUIDE.md`.
+
+## What this is
+
+Electron + React + Vite desktop app for a **local video library** (SQLite, scan, thumbnails, ingest). Standalone — not the image-scoring gallery.
+
+## Where to look first
+
+- `CLAUDE.md` — orientation and key files.
+- `AGENTS.md` — slash commands, boundaries, commands table.
+- `.agent/PROJECT_GUIDE.md`, `.agent/SAFETY.md`, `.agent/COMMANDS.md`.
+- `.cursor/rules/` — focused mdc rules.
+
+## Core technologies
+
+- React 19, TypeScript 5.9, Vite 7, Electron 31.
+- **SQLite** in the Electron main process (`electron/db/provider.ts`).
+- State: Zustand.
+- Design: `@synthet/image-scoring-design` (sibling UI package).
+
+## Key entry points
+
+- `electron/main.ts` — IPC handlers
+- `electron/preload.ts` — `contextBridge`
+- `electron/db.ts`, `electron/db/provider.ts` — DB (main process only)
+- `server/index.ts` — dev Express API
+- `src/main.tsx` — renderer entry
+
+## IPC pattern (required)
+
+Main process owns DB and filesystem; renderer uses `window.electronAPI` only.
+
+## Commands
+
+- `npm run dev` — full dev stack
+- `npm run dev:web` — without Electron
+- `npm run build` / `npm run dist`
+- `npx tsc --noEmit` — renderer
+- `npx tsc -p electron/tsconfig.json --noEmit` — main process
+
+## Hard rules
+
+- **Never** add renderer-process DB or raw filesystem access.
+- **Do not** modify `.git/config`.
+- **Do not** commit `*.db`, thumbnails cache, or local secrets.
+- Backlog: use the shared GitHub Project when the team requires it — see `.cursor/skills/backlog-queue/SKILL.md`.

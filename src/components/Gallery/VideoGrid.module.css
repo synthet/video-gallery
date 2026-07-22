@@ -1,0 +1,97 @@
+.gridWrap {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+.empty,
+.loading {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  color: var(--color-text-muted);
+}
+
+.emptyTitle {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.emptyHint {
+  font-size: var(--font-sm);
+}
+
+.emptyActions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: app-spinner 0.8s linear infinite;
+}
+
+.refreshOverlay {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  font-size: var(--font-sm);
+  color: var(--color-text-secondary);
+  pointer-events: none;
+}
+
+.refreshOverlay .spinner {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+}
+
+.pagination {
+  padding: var(--space-md) var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-sm);
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+}
+
+.pageActions {
+  display: flex;
+  gap: var(--space-sm);
+}

@@ -305,9 +305,11 @@ export async function getKeywords(): Promise<string[]> {
 export async function getDatesWithShots(options: VideoQueryOptions = {}): Promise<string[]> {
     const params: QueryParam[] = [];
     const whereClause = buildWhereClause(options, params);
-    
+    const dateFilter = 'captured_at IS NOT NULL AND captured_at <> ""';
+    const fullWhere = whereClause ? `${whereClause} AND ${dateFilter}` : `WHERE ${dateFilter}`;
+
     const rows = await query<{ captured_at: string }>(
-        `SELECT DISTINCT captured_at FROM videos ${whereClause} WHERE captured_at IS NOT NULL AND captured_at <> "" ORDER BY captured_at DESC`,
+        `SELECT DISTINCT captured_at FROM videos ${fullWhere} ORDER BY captured_at DESC`,
         params
     );
     return rows.map(r => r.captured_at);
