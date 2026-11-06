@@ -25,7 +25,7 @@ These conventions apply when creating, updating, or reorganizing pages in `docs/
 - Link related pages **bidirectionally**. When you add a link from page A → B, check whether B should also link back to A.
 - Use relative paths from the linking file (e.g., `../architecture/02-database-design.md`).
 - Use anchors for long pages (e.g., `02-database-design.md#connection-logic`).
-- Cross-repo links to **image-scoring-backend** use full GitHub URLs (existing convention).
+- Cross-repo links to **image-scoring-pipeline** use full GitHub URLs (existing convention).
 
 ## Index maintenance
 

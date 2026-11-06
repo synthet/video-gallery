@@ -26,7 +26,7 @@ alwaysApply: true
 
 - Shared design tokens: sibling **image-scoring-ui** (`@synthet/image-scoring-design`).
 - Agent infra reference: sibling **image-scoring-gallery**.
-- Scoring/backlog coordination: **image-scoring-backend** when explicitly in scope.
+- Scoring/backlog coordination: **image-scoring-pipeline** when explicitly in scope.
 
 ## Agent infra index
 

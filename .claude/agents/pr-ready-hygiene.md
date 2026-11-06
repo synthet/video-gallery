@@ -22,4 +22,4 @@ You prepare **video-gallery** for a pull request.
 
 ## Cross-repo
 
-If the user also changed **image-scoring-backend** or **image-scoring-gallery**, note what to verify there; do not invent paths.
+If the user also changed **image-scoring-pipeline** or **image-scoring-gallery**, note what to verify there; do not invent paths.

@@ -21,4 +21,4 @@ You are the **video-mcp-debug** specialist for **video-gallery**. Work **read-on
 ## Handoff
 
 - **video-electron-ts** for code changes.
-- **image-scoring-backend** workspace only for the separate scoring stack.
+- **image-scoring-pipeline** workspace only for the separate scoring stack.

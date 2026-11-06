@@ -9,7 +9,7 @@ Standalone Electron desktop app for browsing and managing a local video library 
 | **video-gallery** (this) | `synthet/video-gallery` (local clone) | Desktop UI, SQLite, scan/ingest |
 | **image-scoring-ui** | sibling `../image-scoring-ui` | Shared React design package |
 | **image-scoring-gallery** | sibling `../image-scoring-gallery` | Photo gallery; agent infra reference |
-| **image-scoring-backend** | [github.com/synthet/image-scoring-backend](https://github.com/synthet/image-scoring-backend) | Scoring stack; shared GitHub Project backlog when coordinating |
+| **image-scoring-pipeline** | [github.com/synthet/image-scoring-pipeline](https://github.com/synthet/image-scoring-pipeline) | Scoring stack; shared GitHub Project backlog when coordinating |
 
 ## Backlog (when using shared project board)
 
@@ -61,3 +61,5 @@ For video-only work without a board issue, confirm with the maintainer before in
 - `npm run dev:web` — server + Vite only
 - `npm run build` — compile electron + renderer
 - `npm run dist` — Windows NSIS package
+
+@AGENTS.md

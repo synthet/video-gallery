@@ -42,4 +42,4 @@ Never add `sqlite3` or `fs` usage in the renderer.
 ## Cross-repo
 
 - Design tokens: `@synthet/image-scoring-design` from sibling **image-scoring-ui**
-- For shared backlog/process: **image-scoring-gallery** docs and **image-scoring-backend** when coordinating scoring work
+- For shared backlog/process: **image-scoring-gallery** docs and **image-scoring-pipeline** when coordinating scoring work

@@ -61,7 +61,7 @@ Follow the existing format exactly:
 1. **Bidirectional** — When A links to B, B should link back to A (where meaningful).
 2. **Relative paths** — From the referencing file, e.g., `../architecture/02-database-design.md`.
 3. **Anchors** — Use section anchors for long pages: `file.md#section-name`.
-4. **Backend cross-repo** — Full GitHub URLs: `https://github.com/synthet/image-scoring-backend/blob/main/docs/...`.
+4. **Backend cross-repo** — Full GitHub URLs: `https://github.com/synthet/image-scoring-pipeline/blob/main/docs/...`.
 5. **Local stubs** — When a canonical doc lives in the backend repo, the gallery stub notes where the canonical content is and links to it.
 
 ## Page Conventions

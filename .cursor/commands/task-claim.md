@@ -18,7 +18,7 @@ Run the steps below in order. Stop and report on any failure — do not proceed 
 ### 1. Resolve repo + verify the issue is claimable
 
 ```bash
-REPO="video-gallery"   # or image-scoring-backend if --repo backend
+REPO="video-gallery"   # or image-scoring-pipeline if --repo backend
 N="<issue-number>"
 
 gh issue view "$N" --repo "synthet/$REPO" --json number,state,assignees,title

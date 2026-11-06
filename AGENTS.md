@@ -95,3 +95,26 @@ If **`cli-review`** fails, build the sibling orchestrator: `cd ../subagent-orche
 3. `ELECTRON_IS_DEV=1 npx electron .`
 
 Ensure `libraryRoot` in `config.json` points at a readable video folder (or accept empty library for UI-only work).
+
+<!-- BEGIN FRAMEWORK SETUP -->
+
+## Shared agent setup
+
+Project-specific instructions in this file and nested instruction files govern this workspace.
+Reusable skills are authored in `.claude/skills/`; other harness trees are generated.
+Run installed helpers relative to their skill directory; run project checks from this workspace.
+Preserve user edits, credentials, model settings, permissions and unrelated configuration.
+- Build: `npm run build`
+
+Installed library: 55 applicable skills. Synchronize explicitly; startup hooks never install updates.
+<!-- END FRAMEWORK SETUP -->
+
+<!-- FRAMEWORK RULE REFERENCES -->
+Read the always-on project rules before working:
+- `.claude/rules/agent-canonical-sources.md`
+- `.claude/rules/backlog-queue.md`
+- `.claude/rules/external-cli-subagents.md`
+- `.claude/rules/karpathy-coding.md`
+- `.claude/rules/safety-and-secrets.md`
+- `.claude/rules/sdlc-core.md`
+<!-- END FRAMEWORK RULE REFERENCES -->

@@ -19,7 +19,7 @@ Run the steps below in order. Stop and report on any failure — do not proceed 
 
 ```bash
 # Default repo is the current one. Caller may pass --repo gallery|backend.
-REPO="video-gallery"   # or image-scoring-backend if --repo backend
+REPO="video-gallery"   # or image-scoring-pipeline if --repo backend
 N="<issue-number>"
 
 # Confirm the issue exists, isn't closed, and isn't already assigned to someone else.

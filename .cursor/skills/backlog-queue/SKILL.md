@@ -1,6 +1,6 @@
 ---
 name: backlog-queue
-description: Cross-repo GitHub Project board is the canonical task queue. Use whenever picking work, claiming an issue, transitioning Stage, or filing/closing a backlog issue across video-gallery or image-scoring-backend.
+description: Cross-repo GitHub Project board is the canonical task queue. Use whenever picking work, claiming an issue, transitioning Stage, or filing/closing a backlog issue across video-gallery or image-scoring-pipeline.
 ---
 
 # Backlog queue (Cursor canonical)
@@ -8,7 +8,7 @@ description: Cross-repo GitHub Project board is the canonical task queue. Use wh
 > The canonical task queue is the GitHub Project board:
 > **https://github.com/users/synthet/projects/1**
 >
-> It spans both repos: `synthet/video-gallery` (this repo) and `synthet/image-scoring-backend`.
+> It spans both repos: `synthet/video-gallery` (this repo) and `synthet/image-scoring-pipeline`.
 > The repo `TODO.md` files are pointers only — **never** add tasks there.
 
 ## When to use
@@ -43,7 +43,7 @@ Use the slash command:
 Or run `gh` directly:
 
 ```bash
-REPO="video-gallery"   # or image-scoring-backend
+REPO="video-gallery"   # or image-scoring-pipeline
 N=<issue-number>
 
 # Verify claimable
@@ -115,7 +115,7 @@ When the user asks for new backlog work:
 
 - Parent issues use `type:epic` and link children via **GitHub sub-issues** (same repo).
 - Cross-repo programs: one epic per repo + `cross-repo` label + counterpart URL in the body.
-- Inventory snapshot (backend repo): [backlog-inventory-2026-05.md](https://github.com/synthet/image-scoring-backend/blob/main/docs/project/backlog-inventory-2026-05.md).
+- Inventory snapshot (backend repo): [backlog-inventory-2026-05.md](https://github.com/synthet/image-scoring-pipeline/blob/main/docs/project/backlog-inventory-2026-05.md).
 
 ### Obsolete (two tiers)
 
@@ -134,7 +134,7 @@ When work touches both repos:
 4. Filter the board by `cross-repo` to see the pair.
 
 The backend repo holds the canonical cross-repo coordination doc:
-[`docs/technical/AGENT_COORDINATION.md`](https://github.com/synthet/image-scoring-backend/blob/main/docs/technical/AGENT_COORDINATION.md).
+[`docs/technical/AGENT_COORDINATION.md`](https://github.com/synthet/image-scoring-pipeline/blob/main/docs/technical/AGENT_COORDINATION.md).
 
 ## Reference IDs (for scripts)
 
@@ -153,10 +153,10 @@ The backend repo holds the canonical cross-repo coordination doc:
 | `Done` option | `73062c96` |
 
 Bootstrap scripts (backend repo, idempotent):
-[`bootstrap_labels.sh`](https://github.com/synthet/image-scoring-backend/blob/main/scripts/bootstrap_labels.sh) ·
-[`audit_backlog_issues.py`](https://github.com/synthet/image-scoring-backend/blob/main/scripts/audit_backlog_issues.py) ·
-[`apply_backlog_inventory.py`](https://github.com/synthet/image-scoring-backend/blob/main/scripts/apply_backlog_inventory.py) ·
-[`backlog-inventory-2026-05.md`](https://github.com/synthet/image-scoring-backend/blob/main/docs/project/backlog-inventory-2026-05.md).
+[`bootstrap_labels.sh`](https://github.com/synthet/image-scoring-pipeline/blob/main/scripts/bootstrap_labels.sh) ·
+[`audit_backlog_issues.py`](https://github.com/synthet/image-scoring-pipeline/blob/main/scripts/audit_backlog_issues.py) ·
+[`apply_backlog_inventory.py`](https://github.com/synthet/image-scoring-pipeline/blob/main/scripts/apply_backlog_inventory.py) ·
+[`backlog-inventory-2026-05.md`](https://github.com/synthet/image-scoring-pipeline/blob/main/docs/project/backlog-inventory-2026-05.md).
 
 ## Don'ts
 

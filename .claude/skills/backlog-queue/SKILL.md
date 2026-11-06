@@ -1,6 +1,6 @@
 ---
 name: backlog-queue
-description: Cross-repo GitHub Project board is the canonical task queue. Use whenever picking work, claiming an issue, transitioning Stage, or filing/closing a backlog issue across video-gallery or image-scoring-backend.
+description: Cross-repo GitHub Project board is the canonical task queue. Use whenever picking work, claiming an issue, transitioning Stage, or filing/closing a backlog issue across video-gallery or image-scoring-pipeline.
 ---
 
 > **Claude Code mirror.** Canonical: [`.cursor/skills/backlog-queue/SKILL.md`](../../../.cursor/skills/backlog-queue/SKILL.md). Keep both in sync.
@@ -10,7 +10,7 @@ description: Cross-repo GitHub Project board is the canonical task queue. Use wh
 > The canonical task queue is the GitHub Project board:
 > **https://github.com/users/synthet/projects/1**
 >
-> It spans both repos: `synthet/video-gallery` (this repo) and `synthet/image-scoring-backend`.
+> It spans both repos: `synthet/video-gallery` (this repo) and `synthet/image-scoring-pipeline`.
 > The repo `TODO.md` files are pointers only — **never** add tasks there.
 
 ## When to use
@@ -32,7 +32,7 @@ description: Cross-repo GitHub Project board is the canonical task queue. Use wh
 ## Manual `gh` workflow
 
 ```bash
-REPO="video-gallery"   # or image-scoring-backend
+REPO="video-gallery"   # or image-scoring-pipeline
 N=<issue-number>
 
 gh issue view "$N" --repo "synthet/$REPO" --json number,state,assignees,title

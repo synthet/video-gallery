@@ -39,4 +39,4 @@ You are the **video-mcp-debug** specialist for **video-gallery**. Work **read-on
 ## Handoff
 
 - **video-electron-ts** — code fixes in `electron/`, `src/`, `server/`.
-- **image-scoring-backend** workspace — only if user is debugging the separate scoring stack (not this app's SQLite library).
+- **image-scoring-pipeline** workspace — only if user is debugging the separate scoring stack (not this app's SQLite library).
